@@ -71,4 +71,6 @@ window.addEventListener('scroll', function () {
   }
 });
 
-
+window.addEventListener('load', (event) => {
+  text.style.marginTop = (-400) + "px";
+});
