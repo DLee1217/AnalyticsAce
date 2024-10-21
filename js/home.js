@@ -57,13 +57,10 @@ window.addEventListener('scroll', function () {
   const header = document.querySelector('header');
   const hero = document.querySelector('.hero');
   
-  // Get the position of the bottom of the header
   const headerBottom = header.getBoundingClientRect().bottom;
-  
-  // Get the position of the bottom of the hero section
+ 
   const heroBottom = hero.getBoundingClientRect().bottom;
 
-  // Check if the header's bottom is below the hero's bottom
   if (headerBottom > heroBottom) {
       header.classList.add('is-sticky');
   } else {
