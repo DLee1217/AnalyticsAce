@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://kit.fontawesome.com/c6a818eb9a.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="img/favicon.ico">
+        <title>The Analytics Ace</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1 class="logo-text"><a href="index.html">Analytics<span>Ace</span></a></h1>
+            </div>
+            <i class="fa fa-bars menu-toggle"></i>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+                    <a href="#">
+                        Try Our Algorithms!  
+                        <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+                    </a>
+                    <ul>
+                        <li><a href="dl.html">Dominance Level (DL+)</a></li>
+                        <li><a href="upr.html">Ultimate Pitcher Rating (UPR+)</a></li>
+                        <li><a href="fq.html">Fastball Quality (FQ+)</a></li>
+                        <li><a href="cs.html">Contact Suppression (CS+)</a></li>
+                        <li><a href="fiera.html">Fatigue Interactive ERA (FiERA+)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <div class="page-wrapper">
+
+            <div class="content clearfix">
+                <div class="main-content">
+                    <div class="calc">
+                        <h1 class="calc-title">Contact Suppression (CS+) Calculator</h1>
+
+                        <div class="container">
+                            <h1>Contact Suppression Calculator</h1>
+
+                            <form action="#" id="calc-form" autocomplete="off">
+                                <div class="form">
+                                    <div class="details basic">
+
+                                        <span class="title">Rate Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="Barrel" placeholder="Barrel %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Hard" placeholder="Hard Contact %" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Whiff" placeholder="Whiff %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Chase" placeholder="Chase %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Sweet" placeholder="Sweet Spot %" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Solid" placeholder="Solid %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="details breakdown">
+                                        
+                                        <span class="title">Advanced Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="xwOBA" placeholder="xwOBA" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="xSLG" placeholder="xSLG" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="xBA" placeholder="xBA" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="xISO" placeholder="xISO" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="xwOBACON" placeholder="xwOBACON" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="FQ" placeholder="FQ+" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="EV" placeholder="Average Exit Velocity" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Calculate" class="button">
+                                </div>
+
+                                <div id="result"></div>
+                            </form>
+
+                            <script>
+                            var form = document.getElementById("calc-form")
+
+                            form.addEventListener("submit",function(event){
+                                event.preventDefault()
+
+                                var Barrel = 780 / parseFloat(document.getElementById("Barrel").value);
+
+                                var Hard = 3500 / parseFloat(document.getElementById("Hard").value);
+
+                                var Whiff = parseFloat(document.getElementById("Whiff").value) * 100 / 24.4;
+
+                                var Chase = parseFloat(document.getElementById("Whiff").value) * 100 / 34.5;
+
+                                var Sweet = 3420 / parseFloat(document.getElementById("Sweet").value);
+
+                                var Solid = 620 / parseFloat(document.getElementById("Solid").value);
+
+                                var xwOBA = 31.3 / parseFloat(document.getElementById("xwOBA").value);
+
+                                var xSLG = 40.7 / parseFloat(document.getElementById("xSLG").value);
+
+                                var xBA = 24.8 / parseFloat(document.getElementById("Whiff").value);
+
+                                var xISO = 15.9 / parseFloat(document.getElementById("xISO").value);
+
+                                var xwOBACON = 37 / parseFloat(document.getElementById("xwOBACON").value);
+
+                                var FQ = parseFloat(document.getElementById("FQ").value);
+                                
+                                const values = [ Barrel,    Hard,   Whiff,  Chase,  Sweet,  Solid,  xwOBA,  xSLG,   xBA,    xISO,   xwOBACON,   FQ];
+
+                                const weights = [0.2,       0.15,   0.1,    0.05,   0.1,    0.05,   0.15,   0.05,   0.05,   0.15,   0.1,        0.1];
+
+                                var avg = 100
+
+                                for (let i = 0; i < 12; i++) {
+                                    avg += (100 * weights[i]) / 1.5;
+                                }
+
+                                let cs = 100;
+
+                                for (let i = 0; i < 12; i++) {
+                                    cs += (values[i] * weights[i]) / 1.5;
+                                }
+
+                                cs = (100 * (cs / avg))
+
+                                document.getElementById("result").innerHTML = cs.toFixed(2);
+                            })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        <script src="js/home.js"></script>
+
+    </body>
+</html>

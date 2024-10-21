@@ -1,0 +1,781 @@
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=League+Spartan:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0%   { --gradient-angle: 0deg }
+    100% { --gradient-angle: 360deg; }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background: #f6f6f6;
+    font-family: "League Spartan", serif;
+    overscroll-behavior: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Candal", serif;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.page-wrapper a:hover {
+    color: #555;
+    transition: 0.5s;
+}
+
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    background: #222;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.btn-big {
+    padding: 0.7rem 1.3rem;
+    line-height: 1.3rem;
+    
+}
+
+.text-input {
+    padding: 0.7rem 1rem;
+    display: block;
+    width: 100%;
+    border-radius: 7px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    color: #444;
+    line-height: 1.5rem;
+    font-size: 1.2em;
+    font-family: "League Spartan", serif;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+
+header {
+    background: #222;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin-bottom: none;
+    transition: background-color 0.3s ease;
+}
+
+header * {
+    color: white;
+}
+
+header .logo {
+    float: left;
+    height: inherit;
+    margin-left: 2em;
+}
+
+header .logo-text {
+    margin: 9px;
+    font-family: "Candal", serif;
+}
+
+header .logo-text span {
+    color: #DB170E;
+}
+
+header ul {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    min-height: 64px;
+}
+
+header ul li {
+    float: left;
+    position: relative;
+    height: 66px;
+}
+
+header ul li ul {
+    position: absolute;
+    background: #222;
+    top: 66px;
+    right: 0px;
+    width: 204px;
+    display: none;
+}
+
+header ul li ul:hover {
+    display: block;
+}
+
+header ul li:hover ul {
+    display: block;
+}
+
+header ul li ul li {
+    width: 100%;
+    height: 100%;
+    padding-top: 0px;
+}
+
+header ul li ul li a {
+    padding: 20px;
+    transition: all 0.5s;
+}
+
+header ul li ul li a:hover {
+    background: #bfbfbf;
+    transition: all 0.5s;
+}
+
+header ul li a {
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.1em;
+}
+
+header ul li a:hover {
+    background: #bfbfbf;
+    color: white;
+    transition: 0.5s;
+}
+
+header .menu-toggle {
+    display: none;
+}
+
+header.is-sticky {
+    background-color: #222 !important; /* Use !important if needed */
+}
+
+
+.hero {
+    width: 100%;
+    height: 101vh;
+    position: relative;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.hero h1 {
+    position: absolute;
+    color: white;
+    white-space: nowrap;
+    font-size: 5.5vw;
+    line-height: 2em;
+    z-index: 9;
+    margin-top: -100px;
+}
+
+.hero h1 span {
+    background: linear-gradient(to right, #2463d8, #DB170E);
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
+.page-wrapper {
+    min-height: 110%;
+}
+
+.page-wrapper a:hover {
+    color: #555;
+    transition: 0.5s;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel .slider-title {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.carousel .next {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    font-size: 2em;
+    color: #DB170E;
+    cursor: pointer;
+}
+
+.carousel .next:hover {
+    color: #db817d;
+    transition: 0.5s;
+}
+
+.carousel .prev {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    font-size: 2em;
+    color: #DB170E;
+    cursor: pointer;
+}
+
+.carousel .prev:hover {
+    color: #db817d;
+    transition: 0.5s;
+}
+
+.carousel .post-wrapper {
+    width: 84%;
+    height: 350px;
+    overflow: hidden;
+    margin: 0px auto;
+    padding: 10px 0px 10px 0px;
+}
+
+.carousel .post-wrapper .post {
+    width: 300px;
+    height: 330px;
+    margin: 0px 10px;
+    display: inline-block;
+    background: white;
+    border-radius: 7px;
+    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
+}
+
+.carousel .post-wrapper .post .post-info {
+    text-align: center;
+    padding: 0px 5px;
+    height: 150px;
+}
+
+.carousel .post-wrapper .post .slider-image {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.content {
+    width: 90%;
+    margin: 30px auto 30px;
+}
+
+.content .main-content {
+    width: 70%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .main-content.single {
+    background-color: white;
+    padding: 20px 50px;
+    font-size: 1.1em;
+    border-radius: 7px;
+}
+
+.content .main-content.single .post-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.content .main-content.single p {
+    color: #222;
+    line-height: 1.5em;
+    font-size: 1.2em;
+}
+
+.content .main-content.single .post-single-image {
+    width: 90%;
+    height: 30%;
+    margin: 30px auto 10px auto;
+}
+
+.content .main-content .post {
+    width: 95%;
+    height: 270px;
+    margin: 20px auto;
+    border-radius: 7px;
+    background: white;
+    position: relative;
+}
+
+.content .main-content .post .read-more {
+    padding: 20px 60px;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #2463d8, #DB170E);
+    cursor: pointer;
+    z-index: 1;
+    color: #222;
+    transition: 200ms;
+}
+
+.content .main-content .post .read-more::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    border-radius: 4px;
+    background-color: white;
+    z-index: -1;
+    transition: 200ms;
+  }
+
+.content .main-content .post .read-more:hover::before {
+    opacity: 50%;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+.content .main-content .post .read-more:hover{
+    color: white;
+}
+
+.content .main-content .post .post-image {
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.content .main-content .post .post-preview {
+    width: 50%;
+    padding: 10px;
+    float: right;
+}
+
+.content .main-content .post .post-preview p{
+    line-height: 1.5rem;
+}
+
+.content .main-content .recent-post-title {
+    margin: 20px;
+}
+
+.content .sidebar {
+    width: 30%;
+    float: left;
+    height: 300px;
+}
+
+.content .sidebar.single {
+    padding: 0px 20px;
+}
+
+.content .sidebar .section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+.content .sidebar .section .section-title {
+    margin: 10px, 0px, 10px, 0px;
+}
+
+.content .sidebar .section.search {
+    margin-top: 102px;
+}
+
+.content .sidebar .section.topics ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.content .sidebar .section.topics ul li a {
+    display: block;
+    padding: 15px 0px 15px 0px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.content .sidebar .section.topics ul li a:hover {
+    padding-left: 10px;
+    transition: all 0.3s;
+}
+
+.calc-label {
+    font-family: "League Spartan", serif;
+    font-size: 1.2em;
+    line-height: 2.3rem;
+}
+
+.calc-input {
+    border-radius: 5px;
+    border: 2px solid #222;
+    font-size: 1.1em;
+    width: 17%;
+    background: #e3e3e3;
+}
+
+.calc-input:focus {
+    background: #d3d3d3;
+}
+
+.calc-button {
+    font-family: "League Spartan", serif;
+    font-size: 1.2em;
+    line-height: 2em;
+    padding: 6px 10px 6px 10px;
+    margin-top: 8px;
+    background: #d3d3d3;
+    border-radius: 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+.calc-button:hover {
+    background: #333;
+    color: white;
+}
+
+.rankings-table {
+    border-collapse: collapse;
+    margin: 25px 20px;
+    font-size: 1.3em;
+    font-family: "League Spartan", sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+}
+
+.rankings-table thead tr {
+    background: linear-gradient(to right, #DB170E, #2463d8);
+    color: #ffffff;
+    text-align: left;
+}
+
+.rankings-table th:first-child{
+    border-top-left-radius: 10px;
+}
+
+.rankings-table th:last-child{
+    border-top-right-radius: 10px;
+}
+
+.rankings-table th,
+.rankings-table td {
+    padding: 17px 15px;
+}
+
+
+.rankings-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.rankings-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.rankings-table tbody tr:last-of-type {
+    border-bottom: 2px solid #222;
+}
+
+.rankings-table tbody tr:hover {
+    background: #e3e3e3;
+    color: #DB170E;
+}
+
+.container {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    font-family: "League Spartan", sans-serif;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.container h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    height: 4px;
+    width: 12%;
+    border-radius: 8px;
+    background: linear-gradient(to right, #2463d8 0%, #DB170E 100%);
+}
+
+.container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: #fff;
+    border: none;
+}
+
+.container form .details {
+    margin-top: 30px;
+}
+
+.container form .details.breakdown {
+    margin-top: 10px;
+}
+
+.container form .title {
+    display: block;
+    padding: 15px 0 0 0;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.container form .fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container form input {
+    border: none;
+    outline: none !important;
+}
+
+form .fields .input-fields {
+    display: flex;
+    width: calc((100% / 3) - 15px);
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.container form .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #DB170E;
+    transition: all 0.3s linear;
+}
+
+form .button:hover {
+    background-color: #d54b44;
+    cursor: pointer;
+}
+
+form .button i {
+    margin: 0 6px;
+}
+
+.input-fields {
+    height: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.input-fields input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    border: none;
+}
+
+.input-fields label {
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    color: gray;
+    pointer-events: none;
+}
+
+.container form .underline:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    left: 0;
+    bottom: 0;
+}
+
+.container form .underline:after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #2463d8 0%, #DB170E 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.3s ease;
+}
+
+.input-fields input:focus ~ .underline:after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.input-fields input:valid ~ .underline:after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+header .nav {
+    margin: 4px;
+}
+
+header .nav li ul {
+    padding: 4px;
+}
+
+.hero {
+    position: relative;
+    cursor: default;
+}
+
+.hero .explain-container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
+}
+
+.card {
+    background: #111; /* Card's background */
+    position: relative;
+    margin-top: 250px;
+    padding: 3.5em;
+    padding-top: 4em;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for depth */
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    text-align: center;
+    color: white; /* Ensure text color stands out on dark background */
+}
+
+.card p {
+    font-size: 1.2em;
+    line-height: 2rem;
+    color: white; /* Ensure text color stands out on dark background */
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--gradient-angle), #DB170E, #00ff99, #2463d8, #ff0095, #Db170e); /* Pseudo-element background */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Fix the translate syntax */
+    z-index: -1; /* Move behind the card's background */
+    border-radius: 10px;
+    padding: 4px;
+    animation: 5s rotation linear infinite;
+}
+
+.card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--gradient-angle), #DB170E, #00ff99, #2463d8, #ff0095, #Db170e); /* Pseudo-element background */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Fix the translate syntax */
+    z-index: -1; /* Move behind the card's background */
+    border-radius: 10px;
+    padding: 3px;
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+.card button {
+    border: 2px solid white;
+    margin-left: 75px;
+    padding: 10px;
+    border-radius: 0.5em;
+    position: relative;
+    background: #111;
+    transition: 0.5s;
+}
+
+.card button:hover {
+    cursor: pointer;
+    background: white;
+    transition: 0.5s;
+}
+
+.card button:hover a {
+    color: #111;
+    transition: 0.5s;
+}
+
+.card button a {
+    color: white;
+    font-size: 1.2em;
+    font-family: "League Spartan", serif;
+}
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://kit.fontawesome.com/c6a818eb9a.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="img/favicon.ico">
+        <title>The Analytics Ace</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1 class="logo-text"><a href="index.html">Analytics<span>Ace</span></a></h1>
+            </div>
+            <i class="fa fa-bars menu-toggle"></i>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+                    <a href="#">
+                        Try Our Algorithms!  
+                        <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+                    </a>
+                    <ul>
+                        <li><a href="dl.html">Dominance Level (DL+)</a></li>
+                        <li><a href="upr.html">Ultimate Pitcher Rating (UPR+)</a></li>
+                        <li><a href="fq.html">Fastball Quality (FQ+)</a></li>
+                        <li><a href="cs.html">Contact Suppression (CS+)</a></li>
+                        <li><a href="fiera.html">Fatigue Interactive ERA (FiERA+)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <div class="page-wrapper">
+
+            <div class="content clearfix">
+                <div class="main-content">
+                    <div class="calc">
+                        <h1 class="calc-title">Fastball Quality (FQ+) Calculator</h1>
+
+                        <div class="container">
+                            <h1>Fastball Quality Calculator</h1>
+
+                            <form action="#" id="calc-form" autocomplete="off">
+                                <div class="form">
+                                    <div class="details basic">
+
+                                        <span class="title">Pitch Properties</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="FB" placeholder="Average Velocity" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Spin" placeholder="Average Spin Rate" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Movement" placeholder="Total Movement" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="details breakdown">
+                                        
+                                        <span class="title">Rate Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="K" placeholder="Strikeout %" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Whiff" placeholder="Whiff %" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Hard" placeholder="Hard Hit %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="details analysis">
+                                        
+                                        <span class="title">Expected Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="xSLG" placeholder="Expected Slugging %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="xwOBA" placeholder="Expected wOBA" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Calculate" class="button">
+                                </div>
+
+                                <div id="result"></div>
+                            </form>
+
+                            <script>
+                            var form = document.getElementById("calc-form")
+
+                            form.addEventListener("submit",function(event){
+                                event.preventDefault()
+
+                                var Velo = parseFloat(document.getElementById("FB").value) * 100 / 93.8;
+                                
+                                var Spin = parseFloat(document.getElementById("Spin").value) * 100 / 2200;
+
+                                var Mvt = parseFloat(document.getElementById("Movement").value) * 100 / 18;
+
+                                var K = parseFloat(document.getElementById("K").value) * 100 / 22.7;
+
+                                var Whiff = parseFloat(document.getElementById("Whiff").value) * 100 / 21.7;
+
+                                var Hard = 3500 / parseFloat(document.getElementById("Hard").value);
+
+                                var xSLG = 100 * 0.420 / parseFloat(document.getElementById("xSLG").value);
+
+                                var xwOBA = 100 * 0.320 / parseFloat(document.getElementById("FB").value);
+
+                                const values = [ Velo,  Spin,   Mvt,    K,      Whiff,  Hard,   xSLG,   xwOBA];
+
+                                const weights = [0.15,   0.15,   0.1,    0.15,   0.15,   0.1,    0.1,    0.1];
+
+                                var avg = 100
+
+                                for (let i = 0; i < 8; i++) {
+                                    avg += (100 * weights[i]) * 17;
+                                }
+
+                                let dL = 100;
+
+                                for (let i = 0; i < 8; i++) {
+                                    dL += (values[i] * weights[i]) * 17;
+                                }
+
+                                dL = (100 * (dL / avg))
+
+                                document.getElementById("result").innerHTML = dL.toFixed(2);
+                            })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        <script src="js/home.js"></script>
+
+    </body>
+</html>

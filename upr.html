@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://kit.fontawesome.com/c6a818eb9a.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="img/favicon.ico">
+        <title>The Analytics Ace</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1 class="logo-text"><a href="index.html">Analytics<span>Ace</span></a></h1>
+            </div>
+            <i class="fa fa-bars menu-toggle"></i>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+                    <a href="#">
+                        Try Our Algorithms!  
+                        <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+                    </a>
+                    <ul>
+                        <li><a href="dl.html">Dominance Level (DL+)</a></li>
+                        <li><a href="upr.html">Ultimate Pitcher Rating (UPR+)</a></li>
+                        <li><a href="fq.html">Fastball Quality (FQ+)</a></li>
+                        <li><a href="cs.html">Contact Suppression (CS+)</a></li>
+                        <li><a href="fiera.html">Fatigue Interactive ERA (FiERA+)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <div class="page-wrapper">
+
+            <div class="content clearfix">
+                <div class="main-content">
+                    <div class="calc">
+                        <h1 class="calc-title">Ultimate Pitcher Rating (UPR+) Calculator</h1>
+
+                        <div class="container">
+                            <h1>Ultimate Pitcher Rating Calculator</h1>
+
+                            <form action="#" id="calc-form" autocomplete="off">
+                                <div class="form">
+                                    <div class="details basic">
+
+                                        <span class="title">+ Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="DL" placeholder="DL+" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="ERA" placeholder="ERA+" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="AVG" placeholder="AVG+" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="Stuff" placeholder="Stuff+" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Location" placeholder="Location+" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="Pitching" placeholder="Pitching+" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="details breakdown">
+                                        
+                                        <span class="title">Rate Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="K" placeholder="Strikeout %" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="BB" placeholder="Walk %" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="HR" placeholder="Home Runs / 9" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="BABIP" placeholder="BABIP" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="WHIP" placeholder="WHIP" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="SIERA" placeholder="SIERA" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="details analysis">
+                                        
+                                        <span class="title">Miscellaneous Stats</span>
+
+                                        <div class="fields">
+                                            <div class="input-fields">
+                                                <input type="text" id="WAR" placeholder="WAR" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                            
+                                            <div class="input-fields">
+                                                <input type="text" id="WPA" placeholder="WPA" required>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-fields">
+                                                <input type="text" id="BPF" placeholder="BPF" required>
+                                                <div class="underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Calculate" class="button">
+                                </div>
+
+                                <div id="result"></div>
+                            </form>
+
+                            <script>
+                            var form = document.getElementById("calc-form")
+
+                            form.addEventListener("submit",function(event){
+                                event.preventDefault()
+
+                                var DL = parseFloat(document.getElementById("DL").value) / 10;
+
+                                var ERA = parseFloat(document.getElementById("ERA").value) / 10;
+
+                                var AVG = parseFloat(document.getElementById("AVG").value) / 10;
+
+                                var Stuff = parseFloat(document.getElementById("Stuff").value) / 10;
+
+                                var Location = parseFloat(document.getElementById("Location").value) / 10;
+
+                                var Pitching = parseFloat(document.getElementById("Pitching").value) / 10;
+
+                                var K = parseFloat(document.getElementById("K").value) * 0.4405;
+
+                                var BB = parseFloat(document.getElementById("BB").value) * 1.25;
+
+                                var HR = parseFloat(document.getElementById("HR").value) * 9.0909;
+
+                                var BABIP = parseFloat(document.getElementById("BABIP").value) * 33.3333;
+
+                                var WHIP = parseFloat(document.getElementById("WHIP").value) * 7.6923;
+
+                                var SIERA = parseFloat(document.getElementById("SIERA").value) * 2.5;
+
+                                var WAR = parseFloat(document.getElementById("WAR").value) * 5;
+
+                                var WPA = parseFloat(document.getElementById("ERA").value) * 10;
+
+                                var BPF = parseFloat(document.getElementById("BPF").value) / 10;
+                                
+                                const values = [ DL,    ERA,    AVG,    Stuff,  Location,  Pitching,     K,    BB,     HR,   BABIP,   WHIP,   SIERA,   WAR,  WPA,  BPF];
+
+                                const weights = [3,     2,      2,      3,      3,         3,            3,     -1.5,  -2,   3,       -2,     -3,      3,    1.5,  1];
+
+                                const control = [10,    10,     10,     10,     10,        10,           10,    10,    10,   10,      10,     10,      10,   10,   10];
+
+                                var avg = 100
+
+                                for (let i = 0; i < 15; i++) {
+                                    avg += (control[i] * weights[i]) / 37;
+                                }
+
+                                let upr = 100;
+
+                                for (let i = 0; i < 15; i++) {
+                                    upr += (values[i] * weights[i]) / 37;
+                                }
+
+                                upr = (100 * (upr / avg))
+
+                                document.getElementById("result").innerHTML = upr.toFixed(2);
+                            })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        <script src="js/home.js"></script>
+
+    </body>
+</html>
