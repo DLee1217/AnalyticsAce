@@ -198,6 +198,7 @@ header.is-sticky {
     font-size: 5.5vw;
     line-height: 2em;
     z-index: 9;
+    margin-top: 0px;
 }
 
 .hero h1 span {
