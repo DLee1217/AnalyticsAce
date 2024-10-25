@@ -702,7 +702,7 @@ header .nav li ul {
     margin-top: 250px;
     padding: 3.5em;
     padding-top: 4em;
-    width: 400px;
+    width: 20vw;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for depth */
     margin-left: 25px;
