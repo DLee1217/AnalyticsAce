@@ -36,19 +36,11 @@ $(document).ready(function() {
 });
 
 let text = document.getElementById("text");
-let dl = document.getElementById("dl");
-let upr = document.getElementById("upr");
-let cs = document.getElementById("cs");
-let fiera = document.getElementById("fiera");
 
 window.addEventListener("scroll", () => {
   let value = window.scrollY;
 
-  text.style.marginTop = ((value * 1) - 400) + "px";
-  dl.style.marginRight = ((value * 2.4) + 25) + "px";
-  upr.style.marginRight = ((value * 2.45) + 25) + "px";
-  cs.style.marginLeft = ((value * 2.45) + 25) + "px";
-  fiera.style.marginLeft = ((value * 2.4) + 25) + "px";
+  text.style.marginTop = (value * 1) + "px";
 })
 
 document.body.scrollTop = document.documentElement.scrollTop = 0;
