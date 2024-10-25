@@ -710,14 +710,14 @@ header .nav li ul {
 }
 
 .card h2 {
-    font-size: 1.5em;
+    font-size: 1.5vh;
     text-align: center;
     color: white; /* Ensure text color stands out on dark background */
 }
 
 .card p {
-    font-size: 1.2em;
-    line-height: 2rem;
+    font-size: 1.2vh;
+    line-height: 2em;
     color: white; /* Ensure text color stands out on dark background */
 }
 
